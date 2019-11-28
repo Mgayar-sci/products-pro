@@ -1,0 +1,10 @@
+node_modules
+package-lock.json*
+.vscode
+build*
+.scannerwork
+yarn-error.log
+.idea
+*.iml
+yarn.lock*
+/jsconfig.json
