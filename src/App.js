@@ -12,19 +12,27 @@ class App extends React.Component {
   products = [
     {
       id: 0,
-      name: "Product 0"
+      title: "Product 0",
+      price: 100,
+      description: "abc def"
     },
     {
       id: 1,
-      name: "Product 1"
+      title: "Product 1",
+      price: 100,
+      description: "abc def"
     },
     {
       id: 2,
-      name: "Product 2"
+      title: "Product 2",
+      price: 100,
+      description: "abc def"
     },
     {
       id: 3,
-      name: "Product 3"
+      title: "Product 3",
+      price: 100,
+      description: "abc def"
     }
   ];
 
@@ -44,10 +52,10 @@ class App extends React.Component {
       <BrowserRouter>
       <div className="app">
         <Cart count={this.state.proCount} />
-        <Grid container spacing={40}>
+        <Grid container spacing={5}>
           {this.products &&
             this.products.map(p => (
-              <Product1 addToCart={this.manageCart} {...p} key={p.id} />
+              <Product1 addToCart={this.manageCart} product={p} key={p.id} />
             ))}
         </Grid>
         {/* <Product1  addToCart={this.manageCart} {...p} key={p.id} /> */}
