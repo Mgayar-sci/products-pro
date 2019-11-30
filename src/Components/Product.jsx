@@ -1,30 +1,32 @@
-import React from 'react';
-import "./Product.css";
+import React from "react";
 import { Link } from "react-router-dom";
-class Product extends React.Component{
-  
-  addToCart = ()=>{
-    this.props.addToCart(1,this.props.id);
-  }
-  subToCart = ()=>{
-    this.props.addToCart(-1,this.props.id);
-  }
-  render(){
-    const {name,id} = this.props;
+
+
+import "./Product.css";
+
+function Product(props) {
+  const addToCart = () => {
+    props.addToCart(1, props.id);
+  };
+  const subToCart = () => {
+    props.addToCart(-1, props.id);
+  };
+
+  const { name, id } = props;
   return (
-    <div className = "Product">
+    <div className="Product">
       <span>{name}</span>
       <Link to={`/product/${id}`}>
-        <img src="/Halloween_Sale.PNG" alt=""/>
+        <img src="/Halloween_Sale.PNG" alt="" />
       </Link>
-      <br/>
-      <div className = "buttons">
-        <button onClick={this.addToCart}>+</button>
-        <button onClick={this.subToCart}>-</button>
+      <br />
+      <div className="buttons">
+        <button onClick={addToCart}>+</button>
+        <button onClick={subToCart}>-</button>
       </div>
-  </div>
+
+    </div>
   );
-  }
 }
 
 export default Product;

@@ -2,6 +2,8 @@ import React from "react";
 import Cart from "./Components/Cart";
 import Product from "./Components/Product";
 import {BrowserRouter} from "react-router-dom";
+import Product1 from "./Product";
+import { Grid } from "@material-ui/core";
 
 class App extends React.Component {
   state = {
@@ -42,10 +44,13 @@ class App extends React.Component {
       <BrowserRouter>
       <div className="app">
         <Cart count={this.state.proCount} />
-        {this.products &&
-          this.products.map(p => (
-            <Product addToCart={this.manageCart} {...p} key={p.id} />
-          ))}
+        <Grid container spacing={40}>
+          {this.products &&
+            this.products.map(p => (
+              <Product1 addToCart={this.manageCart} {...p} key={p.id} />
+            ))}
+        </Grid>
+        {/* <Product1  addToCart={this.manageCart} {...p} key={p.id} /> */}
       </div>
       </BrowserRouter>
     );
