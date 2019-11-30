@@ -1,9 +1,9 @@
 import React from "react";
 import Cart from "./Components/Cart";
-import Product from "./Components/Product";
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Product1 from "./Product";
-import { Grid } from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
+import AppBar from "./Components/AppBar";
 
 class App extends React.Component {
   state = {
@@ -14,25 +14,25 @@ class App extends React.Component {
       id: 0,
       title: "Product 0",
       price: 100,
-      description: "abc def"
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id augue vel enim venenatis rutrum. Vestibulum varius rutrum leo in pretium. Praesent ac pretium tortor, sit amet vestibulum eros. Donec sit amet finibus turpis. Aenean tempus dolor arcu, egestas condimentum metus interdum at. Vivamus ut nunc vitae sapien sagittis blandit nec eget erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam orci, ultricies convallis vulputate at, gravida at nulla. Maecenas et vehicula tellus, sit amet faucibus elit. Nunc id feugiat ipsum. Nulla et mi mi. Maecenas condimentum malesuada lacinia. Quisque nec sollicitudin quam."
     },
     {
       id: 1,
       title: "Product 1",
       price: 100,
-      description: "abc def"
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae vehicula metus. Praesent metus."
     },
     {
       id: 2,
       title: "Product 2",
       price: 100,
-      description: "abc def"
+      description: "Mauris pretium fringilla arcu in volutpat. Nunc ultrices venenatis mattis. Curabitur pharetra amet."
     },
     {
       id: 3,
       title: "Product 3",
       price: 100,
-      description: "abc def"
+      description: "Aenean fermentum at arcu eget imperdiet. Nullam quis dui ligula. Vivamus iaculis ex eu quam nullam."
     }
   ];
 
@@ -48,18 +48,27 @@ class App extends React.Component {
   };
 
   render() {
+    const { proCount } = this.state;
+    const cartCount = proCount.filter(p=>p!==0).length;
+    const inCart = this.products.map(p=>Boolean(proCount[p.id] && proCount[p.id] > 0));
+    
     return (
       <BrowserRouter>
-      <div className="app">
-        <Cart count={this.state.proCount} />
-        <Grid container spacing={5}>
-          {this.products &&
-            this.products.map(p => (
-              <Product1 addToCart={this.manageCart} product={p} key={p.id} />
-            ))}
-        </Grid>
-        {/* <Product1  addToCart={this.manageCart} {...p} key={p.id} /> */}
-      </div>
+        <AppBar cartCount={cartCount}/>
+          <Cart count={proCount} />
+          <Container>
+          <Grid container spacing={5}>
+            {this.products &&
+              this.products.map(p => (
+                <Product1
+                  addToCart={this.manageCart}
+                  product={p}
+                  key={p.id}
+                  isInCart={inCart[p.id]}
+                />
+              ))}
+          </Grid>
+          </Container>
       </BrowserRouter>
     );
   }
