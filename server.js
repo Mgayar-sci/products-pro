@@ -1,7 +1,7 @@
 /**
  * This file is created to test how build affects css styles 
  * First you need to build the project:
- * npm run-script build
+ * npm run build
  * Then after the build completes run this file:
  * node server.js
  * Next navigate to http://localhost:9000/ and test
