@@ -1,0 +1,12 @@
+.Product{
+    width: 100px;
+    margin: 1%;
+}
+.Product img {
+    height: 100px;
+    cursor: pointer;
+}
+
+.Product .buttons button{
+    width: 50%;
+}
